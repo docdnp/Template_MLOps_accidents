@@ -1,11 +1,13 @@
-import pandas as pd
-import numpy as np
-from pathlib import Path
-import click
 import logging
-from sklearn.model_selection import train_test_split
-from check_structure import check_existing_file, check_existing_folder
 import os
+from pathlib import Path
+
+import click
+import numpy as np
+import pandas as pd
+from check_structure import check_existing_file, check_existing_folder
+from sklearn.model_selection import train_test_split
+
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=False), required=0)
@@ -55,7 +57,7 @@ def process_data(input_filepath_users, input_filepath_caract, input_filepath_pla
     df = merge_datasets(df_users, df_veh, df_places, df_caract)
 
     # Add new columns
-    df = add_new_columns(df, nb_victim, nb_vehicules)
+    # df = add_new_columns(df, nb_victim, nb_vehicules)
 
     # Modify target variable
     df = modif_target_variable(df)
